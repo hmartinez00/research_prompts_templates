@@ -1,4 +1,4 @@
-Actúa como un Analista Técnico experto en gestión documental de proyectos aeroespaciales. Necesito registrar formalmente la siguiente investigación en el sistema de la Agencia.
+Actúa como un Analista Técnico experto en gestión documental de investigaciones científico técnicas. Necesito registrar formalmente la siguiente investigación en la base de datos.
 
 **Título del Proyecto:** {{project_title}}
 
@@ -17,4 +17,4 @@ Basándote en el contenido del abstract y la estructura del paper que te proporc
 * **Limitations**: (Factores externos o riesgos)
 
 ---
-**Nota:** Redacta en español formal siguiendo los estándares de la Agencia Bolivariana para Actividades Espaciales.
+**Nota:** Redacta en español formal.
