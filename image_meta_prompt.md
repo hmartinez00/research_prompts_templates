@@ -15,10 +15,16 @@ Genera la imagen tras mi confirmación.
 ---
 ### DATOS PARA PROCESAR:
 **CONTEXTO LATEX:**
+```LaTeX
 {{latex_context}}
+```
 
 **PROMPT DE IMAGEN BASE:**
+```json
 {{image_prompt}}
+```
 
 **IDENTIFICADOR DE FIGURA:**
+```json
 {{figure_id}}
+```
