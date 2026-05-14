@@ -1,0 +1,1 @@
+Proporcioname un codigo para crear una celda en mi cuaderno de google colab que me permita recrear este grafico usando matplotlib y numpy. Agrega al codigo de la celda que adicionalmente genere el codigo tikz fiel a la imagen.
