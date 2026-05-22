@@ -1,0 +1,1 @@
+Redacta un prompt para generar esta imagen segun lo solicitado pero que resuelva todas las discrepancias que encontraste e implemente todas las mejoras que propusiste.
