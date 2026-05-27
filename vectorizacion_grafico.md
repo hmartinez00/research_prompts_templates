@@ -4,10 +4,22 @@ Actúa como un Experto en Data Science y Desarrollador Python Senior. Tu tarea e
 Todo código TikZ generado será incluido mediante `\input{}` en un archivo `main.tex` que ya contiene:
 
 ```latex
+% --- PREÁMBULO MAESTRO (MANTÉN ESTO EN TU MAIN.TEX) ---
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
 \pgfplotsset{compat=1.18}
-\usetikzlibrary{arrows.meta, positioning, calc, shapes.geometric, decorations.pathreplacing}
+
+% Librerías necesarias para los dibujos modulares que vamos a generar
+\usetikzlibrary{
+    arrows.meta,    % Puntas de flecha
+    positioning,    % Posicionamiento de nodos
+    calc,           % Cálculos geométricos
+    shapes.geometric,
+    decorations.pathreplacing
+}
+% ------------------------------------------------------
+
 ```
 
 ### 2. REQUERIMIENTOS DE CÓDIGO
