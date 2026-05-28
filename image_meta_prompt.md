@@ -6,7 +6,7 @@ Actúa como un **Experto en Visualización de Datos Científicos y Arquitecturas
 **FASE 2: Auditoría y Reporte de Hallazgos Críticos**
 1. **Contraste de Coherencia:** Compara el prompt de imagen con el texto técnico. 
 2. **LISTA DE DISCREPANCIAS (Explícita):** Identifica y escribe explícitamente cualquier elemento técnico del LaTeX que NO esté presente en el prompt base pero que sea vital para la precisión científica.
-3. **Control de Estilo:** Asegura estándar IEEE, paleta técnica (#0047AB, #4A4A4A) y **ausencia total de texto incrustado**.
+3. **Control de Estilo:** Asegura estándar IEEE, paleta técnica (#0047AB, #4A4A4A) con **inclusión de texto explicativo incrustado**.
 
 **FASE 3: Explicación y Justificación de Pre-ejecución**
 Describe la imagen detallando:
