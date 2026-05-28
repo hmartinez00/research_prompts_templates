@@ -27,7 +27,7 @@ con este preámbulo ya presente (no lo repitas):
 
 ### CÓDIGO PYTHON DE REFERENCIA
 
-[PEGA AQUÍ EL CÓDIGO GENERADO POR EL PROMPT 1]
+**ANALIZA EL ARCHIVO PYTHON ADJUNTO!**
 
 ---
 
