@@ -97,6 +97,7 @@ Incluye:
 
 ### EJEMPLO DE ESTRUCTURA ESPERADA (esqueleto)
 
+```py
 # === IMPORTS ===
 import ...
 
@@ -123,3 +124,4 @@ btn_guardar.on_click(on_guardar)
 btn_copiar.on_click(on_copiar)
 
 display(nombre_archivo, btn_guardar, btn_copiar, output)
+```
