@@ -1,0 +1,9 @@
+Ok, necesito un guion de narracion para ambas sesiones de esta presentacion. Marca las transiciones entre las slides como se hace en este ejemplo de otra presentacion:
+
+```
+[slide: 0] Bienvenidos al taller de entrenamiento de redes neuronales. En esta sesion revisaremos los fundamentos.
+[slide: 1] En general tendremos dos sesiones donde tendremos la oportunidad de revisar lo concerniente al ajuste de regresiones y resolucion de problemas de clasificacion usando la tecnica del entrenamiento de redes neuronales.
+[slide: 2] Entendido esto, comenzamos por el principio.
+```
+
+Entrega el resultado en un bloque de txt listo para copiar y pegar para cada sesion.
