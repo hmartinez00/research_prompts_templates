@@ -35,6 +35,13 @@ COMPORTAMIENTOS JS YA DEFINIDOS: {{js_registry_actual}}
 
 9. Prohibido cualquier `<script>` o `<style>` suelto dentro del archivo de una lámina individual. Todo CSS va al BLOQUE 2 (fragmento para `styles.blade.php`), todo JS va al BLOQUE 3 (fragmento para `scripts.blade.php`).
 
+10. **⚠️ Verificación obligatoria de `implementada` antes de usar cualquier clase o comportamiento del registro.** Cada entrada de `CLASES CSS YA DEFINIDAS` y `COMPORTAMIENTOS JS YA DEFINIDOS` trae un campo `implementada` (`true`/`false`):
+    - Si `implementada: true` → la clase/comportamiento ya tiene código real en `styles.blade.php`/`scripts.blade.php`. Reutilízala en tus láminas sin volver a definirla en el BLOQUE 2/3.
+    - Si `implementada: false` → **solo existe como planificación** (viene del plan inicial, nunca se escribió su CSS/JS real). Si esta sesión usa esa clase/comportamiento, **estás obligado** a escribir su código real en el BLOQUE 2/3 (usando `propiedades_clave`/`proposito` como base), y reportarla como materializada en el BLOQUE 5 (ver `clases_materializadas` / `comportamientos_materializados`). Nunca asumas que "está en el registro" significa "ya tiene código escrito" — el registro planifica intención, no implementación.
+
+--- ❌ ERROR COMÚN A EVITAR ---
+No des por hecho que una clase existente en el registro con `implementada: false` ya tiene reglas CSS reales en alguna sesión anterior. Si la vas a usar en esta sesión y sigue en `false`, escribir su CSS es tu responsabilidad ahora — de lo contrario el navegador ignora la clase silenciosamente y el layout de la lámina se rompe (desbordamiento, apilado vertical no intencional, tipografía sin contener).
+
 --- ⚠️ NOTA DE ARQUITECTURA: SCOPE DE JAVASCRIPT (LECCIÓN APRENDIDA DEL MÓDULO) ---
 
 Reveal.js mantiene **todas** las láminas de la presentación montadas simultáneamente en el DOM, incluso las que no están visibles. Un `document.querySelectorAll('.mi-clase')` sin acotar a la lámina activa animará o afectará elementos de otras láminas fuera de pantalla, produciendo comportamiento errático (orden de animación incorrecto, retrasos acumulados, temporizadores duplicados). Todo comportamiento nuevo debe seguir este patrón:
@@ -65,7 +72,7 @@ Tu respuesta debe contener **exactamente cinco bloques**, en este orden:
 ```
 (uno por cada lámina listada en `laminas_json`, cada archivo claramente rotulado con su ruta en el comentario de apertura)
 
-**BLOQUE 2 — Adición a `styles.blade.php` (solo clases NUEVAS de esta sesión)**
+**BLOQUE 2 — Adición a `styles.blade.php` (clases NUEVAS de esta sesión + clases del registro con `implementada: false` que estés usando aquí)**
 ```css
 /* ==========================================
    SESIÓN {{session_number}}: {{session_title}}
@@ -78,9 +85,9 @@ Tu respuesta debe contener **exactamente cinco bloques**, en este orden:
     /* ... */
 }
 ```
-Si ninguna clase nueva es necesaria (todo se resuelve con el registro vigente), indica explícitamente `/* Sin clases nuevas en esta sesión — reutiliza el registro vigente. */`.
+Si ninguna clase nueva ni pendiente de materializar es necesaria, indica explícitamente `/* Sin clases nuevas en esta sesión — reutiliza el registro vigente. */`.
 
-**BLOQUE 3 — Adición a `scripts.blade.php` (solo comportamientos NUEVOS de esta sesión)**
+**BLOQUE 3 — Adición a `scripts.blade.php` (comportamientos NUEVOS de esta sesión + comportamientos del registro con `implementada: false` que estés usando aquí)**
 ```javascript
 /**
  * nombreDelComportamiento
@@ -110,14 +117,18 @@ Si ningún comportamiento nuevo es necesario, indica explícitamente `// Sin com
 ```json
 {
   "nuevas_clases": [
-    { "nombre": "slide-nombre-clase", "proposito": "..." }
+    { "nombre": "slide-nombre-clase", "proposito": "...", "implementada": true }
   ],
+  "clases_materializadas": ["nombre-clase-que-ya-existia-con-implementada-false-y-ahora-tiene-css"],
   "nuevos_comportamientos": [
-    { "nombre": "nombreDelComportamiento", "proposito": "..." }
-  ]
+    { "nombre": "nombreDelComportamiento", "proposito": "...", "implementada": true }
+  ],
+  "comportamientos_materializados": ["nombre-que-ya-existia-con-implementada-false-y-ahora-tiene-js"]
 }
 ```
-Si no hubo adiciones, entrega `{"nuevas_clases": [], "nuevos_comportamientos": []}`.
+- `nuevas_clases` / `nuevos_comportamientos`: entradas que **no existían** en el registro antes de esta sesión (siempre con `"implementada": true`, porque ya escribiste su código en el BLOQUE 2/3).
+- `clases_materializadas` / `comportamientos_materializados`: nombres de entradas que **ya existían** en el registro vigente con `implementada: false`, y que en esta sesión finalmente recibieron su CSS/JS real (ver Regla 10). Solo el nombre, no el objeto completo.
+- Si no hubo adiciones ni materializaciones, entrega `{"nuevas_clases": [], "clases_materializadas": [], "nuevos_comportamientos": [], "comportamientos_materializados": []}`.
 
 --- REGLAS ADICIONALES ---
 
